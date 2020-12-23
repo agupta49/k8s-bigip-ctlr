@@ -26,6 +26,8 @@ import (
 type Interface interface {
 	// ExternalDNSs returns a ExternalDNSInformer.
 	ExternalDNSs() ExternalDNSInformer
+	// F5IPAMs returns a F5IPAMInformer.
+	F5IPAMs() F5IPAMInformer
 	// NginxCisConnectors returns a NginxCisConnectorInformer.
 	NginxCisConnectors() NginxCisConnectorInformer
 	// TLSProfiles returns a TLSProfileInformer.
@@ -50,6 +52,11 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // ExternalDNSs returns a ExternalDNSInformer.
 func (v *version) ExternalDNSs() ExternalDNSInformer {
 	return &externalDNSInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// F5IPAMs returns a F5IPAMInformer.
+func (v *version) F5IPAMs() F5IPAMInformer {
+	return &f5IPAMInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // NginxCisConnectors returns a NginxCisConnectorInformer.

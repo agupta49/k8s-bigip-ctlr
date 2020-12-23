@@ -20,6 +20,8 @@ package v1
 
 type ExternalDNSExpansion interface{}
 
+type F5IPAMExpansion interface{}
+
 type NginxCisConnectorExpansion interface{}
 
 type TLSProfileExpansion interface{}

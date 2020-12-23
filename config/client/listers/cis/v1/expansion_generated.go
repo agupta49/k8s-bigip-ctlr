@@ -26,6 +26,14 @@ type ExternalDNSListerExpansion interface{}
 // ExternalDNSNamespaceLister.
 type ExternalDNSNamespaceListerExpansion interface{}
 
+// F5IPAMListerExpansion allows custom methods to be added to
+// F5IPAMLister.
+type F5IPAMListerExpansion interface{}
+
+// F5IPAMNamespaceListerExpansion allows custom methods to be added to
+// F5IPAMNamespaceLister.
+type F5IPAMNamespaceListerExpansion interface{}
+
 // NginxCisConnectorListerExpansion allows custom methods to be added to
 // NginxCisConnectorLister.
 type NginxCisConnectorListerExpansion interface{}

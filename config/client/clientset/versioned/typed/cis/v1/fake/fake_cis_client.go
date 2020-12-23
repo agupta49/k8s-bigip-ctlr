@@ -32,6 +32,10 @@ func (c *FakeK8sV1) ExternalDNSs(namespace string) v1.ExternalDNSInterface {
 	return &FakeExternalDNSs{c, namespace}
 }
 
+func (c *FakeK8sV1) F5IPAMs(namespace string) v1.F5IPAMInterface {
+	return &FakeF5IPAMs{c, namespace}
+}
+
 func (c *FakeK8sV1) NginxCisConnectors(namespace string) v1.NginxCisConnectorInterface {
 	return &FakeNginxCisConnectors{c, namespace}
 }

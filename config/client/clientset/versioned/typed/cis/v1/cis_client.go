@@ -27,6 +27,7 @@ import (
 type K8sV1Interface interface {
 	RESTClient() rest.Interface
 	ExternalDNSsGetter
+	F5IPAMsGetter
 	NginxCisConnectorsGetter
 	TLSProfilesGetter
 	TransportServersGetter
@@ -40,6 +41,10 @@ type K8sV1Client struct {
 
 func (c *K8sV1Client) ExternalDNSs(namespace string) ExternalDNSInterface {
 	return newExternalDNSs(c, namespace)
+}
+
+func (c *K8sV1Client) F5IPAMs(namespace string) F5IPAMInterface {
+	return newF5IPAMs(c, namespace)
 }
 
 func (c *K8sV1Client) NginxCisConnectors(namespace string) NginxCisConnectorInterface {
