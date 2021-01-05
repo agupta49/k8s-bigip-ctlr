@@ -55,6 +55,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=k8s.nginx.org, Version=v1
 	case v1.SchemeGroupVersion.WithResource("externaldnss"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.K8s().V1().ExternalDNSs().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("f5ipams"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.K8s().V1().F5IPAMs().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("nginxcisconnectors"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.K8s().V1().NginxCisConnectors().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("tlsprofiles"):
