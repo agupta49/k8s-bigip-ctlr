@@ -23,6 +23,7 @@ import (
 
 	"github.com/F5Networks/k8s-bigip-ctlr/pkg/crmanager"
 	"github.com/F5Networks/k8s-bigip-ctlr/pkg/health"
+	"github.com/F5Networks/k8s-bigip-ctlr/pkg/ipammachinery"
 	"github.com/F5Networks/k8s-bigip-ctlr/pkg/pollers"
 	bigIPPrometheus "github.com/F5Networks/k8s-bigip-ctlr/pkg/prometheus"
 	"github.com/F5Networks/k8s-bigip-ctlr/pkg/vxlan"
@@ -787,6 +788,21 @@ func initCustomResourceManager(
 	return crMgr
 }
 
+//Amit
+func initializeIPAM(config *rest.Config) *ipammachinery.IPAM {
+
+	ipam := ipammachinery.NewIPAM(
+		ipammachinery.Params{
+			Config:         config,
+			Namespaces:     *namespaces,
+			NamespaceLabel: *namespaceLabel,
+			Partition:      (*bigIPPartitions)[0],
+		})
+
+	return ipam
+
+}
+
 func main() {
 	defer func() {
 		if r := recover(); r != nil {
@@ -874,6 +890,9 @@ func main() {
 		log.Infof("Exiting - signal %v\n", sig)
 		return
 	}
+
+	ipam := initializeIPAM(config)
+	ipam.Init()
 
 	// When CIS configured as AS3 agent disable LTM in globalSection
 	disableLTM := false
