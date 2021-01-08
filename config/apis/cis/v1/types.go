@@ -19,6 +19,7 @@ type VirtualServer struct {
 // VirtualServerSpec is the spec of the VirtualServer resource.
 type VirtualServerSpec struct {
 	Host                   string `json:"host"`
+	Cidr                   string `json:"cidr"`
 	VirtualServerAddress   string `json:"virtualServerAddress"`
 	VirtualServerName      string `json:"virtualServerName"`
 	VirtualServerHTTPPort  int32  `json:"virtualServerHTTPPort"`
