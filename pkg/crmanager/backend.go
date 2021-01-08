@@ -143,7 +143,7 @@ func (agent *Agent) PostConfig(config ResourceConfigWrapper) {
 	if agent.EventChan != nil {
 		select {
 		case agent.EventChan <- allPoolMems:
-			log.Debugf("Custom Resource Manager wrote endpoints to VxlanMgr")
+			log.Debugf("Custom Resource Manager wrote endpoints to VxlanMgr %v", allPoolMems)
 		case <-time.After(3 * time.Second):
 		}
 	}
