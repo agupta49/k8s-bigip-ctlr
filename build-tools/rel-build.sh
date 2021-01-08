@@ -13,9 +13,9 @@ export BUILDDIR=$BUILDDIR
 
 # Licensee need this path to generate attributions
 vendor_dir="$CURDIR/../../k8s-bigip-ctlr/vendor"
-. $CURDIR/attributions-generator.sh
+#. $CURDIR/attributions-generator.sh
 # Run the attributions and save the content to a local file.
-generate_attributions_licensee $vendor_dir >> /build/all_attributions.txt
+#generate_attributions_licensee $vendor_dir >> /build/all_attributions.txt
 
 DEBUG=$DEBUG go_install $(all_cmds)
 
