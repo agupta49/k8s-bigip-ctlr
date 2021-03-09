@@ -172,6 +172,7 @@ func (postMgr *PostManager) postOnEventOrTimeout(timeout time.Duration, cfg conf
 }
 
 func (postMgr *PostManager) postConfig(cfg config) bool {
+	log.Debugf("Amit: Ddecl: %v", cfg.data)
 	httpReqBody := bytes.NewBuffer([]byte(cfg.data))
 
 	req, err := http.NewRequest("POST", cfg.as3APIURL, httpReqBody)
